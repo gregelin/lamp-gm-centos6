@@ -8,7 +8,7 @@ For additional status visit [STATUS.md](STATUS.md)
 
 # About
 
-This repo is to create a Generic GitMachines CentOS 6 that is the starting point for building other GitMachines.
+This repo is to create a LAMP GitMachines CentOS 6 (Linux Apache, MySQL, PHP) that is the starting point for building other GitMachines.
 
 # Versions
 
@@ -29,7 +29,7 @@ At GitMachines we are interested in one-click installs to get accreditation-read
 ### What our one-click build does.
 
 1. Uses CentOS, which is very very close to RedHat Enterprise
-2. Configures CentOS firewall for Apache and Tomcat
+2. Configures CentOS firewall for Apache, MySQL, and PHP in very default configurations.
 
 ### What user needs to do...
 1. Clone repo and cd into repo directory
