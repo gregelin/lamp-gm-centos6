@@ -25,6 +25,7 @@ class { 'repoforge':
 #
 # Gotcha: /etc/puppet/modules/my_fw/manifests/* must exist
 #
+
 notify {"Configure iptable firewall":}
 
 resources { "firewall":
@@ -51,3 +52,26 @@ class { 'firewall':
 
 include apache
 include mysql::server
+
+#
+# Install PHP
+#
+
+# Install and define php
+php::ini { '/etc/php.ini':
+  display_errors => 'On',
+  memory_limit   => '256M',
+}
+
+php::ini { '/etc/httpd/conf/php.ini':
+  mail_add_x_header => 'Off',
+  # For the parent directory
+  require => Class['apache'],
+}
+
+php::module { [ 'mysql', 'tidy', 'pear-Log', 'xml' ]: }
+
+# Add php5 to Apache
+class { 'php::mod_php5': inifile => '/etc/httpd/conf/php.ini', }
+
+
